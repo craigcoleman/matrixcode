@@ -24,7 +24,7 @@ int main () {
 
     double cm[3][3];
     double dm[3][3];
-    double rm[3][3];
+    double im[3][3];
     double scalar = 0;
     double scalar_numerator = 0;
     double scalar_denominator = 0;
@@ -65,15 +65,17 @@ int main () {
   Display33(am,3);
   cout<<"Matrix B  \n";
   Display33(bm,3);
-//det = Det33(a_matrix);
+det = Det33(am);
 Mult33(am,bm,cm);
   cout<<"\n A * B = C"<<endl;
 Display33(cm,3);
-  return 0;
-Scale33(am,scalar);
-  cout<<"\nScaled = "<<scalar<<endl;
-Display33(am,3);
-
+Inverse33(am,im);
+  cout<<"\nInverse of A = det = "<<det<<endl;
+Display33(im,3);
+//Scale33(am,scalar);
+ // cout<<"\nScaled = "<<scalar<<endl;
+//Display33(am,3);
+return 0;
 }//end of main
 
 void Display33 (double m[3][3], int length){
@@ -135,7 +137,7 @@ void Mult33(double A[3][3],double B[3][3],   double C[3][3] ){
 
 void Inverse33(double A[3][3],double I[3][3] ){
     int i, j;
-            I[0][0] = 0;
+            I[0][0] = (A[1][1]*A[2][2])-(A[1][2]*A[2][1]);
             I[0][1] = 0;
             I[0][2] = 0;
 
